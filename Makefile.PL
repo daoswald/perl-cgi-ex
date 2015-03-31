@@ -26,7 +26,27 @@ WriteMakefile(
     realclean         => {
         FILES        => '*~',
     },
-    );
+    META_MERGE => {
+        'meta-spec'   => { version => 2 },
+        resources     => {
+            bugtracker => {
+                web => 'https://rt.cpan.org/Public/Dist/Display.html?Name=CGI-Ex',
+            },
+            repository => {
+                type  => 'git',
+                url   => 'https://github.com/rhandom/perl-cgi-ex.git',
+                web   => 'https://github.com/rhandom/perl-cgi-ex',
+            },
+        },
+        prereqs => {
+            runtime => {
+                requires    => {
+                    'Template::Alloy' => '1.020',
+                },
+            },
+        },
+    },
+);
 
 package MY;
 
