@@ -13,7 +13,7 @@ CGI::Ex - CGI utility suite - makes powerful application writing fun and easy
 use strict;
 use warnings;
 
-our $VERSION = '3.00';
+our $VERSION = '3.01';
 our $PREFERRED_CGI_MODULE ||= 'CGI';
 our $DEBUG_LOCATION_BOUNCE;
 our $GLOBAL_CGIX;

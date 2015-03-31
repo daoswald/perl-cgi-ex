@@ -483,6 +483,26 @@ be concatenated with ||.  Available in JS.
         match_2 => '!m/^0\./ || !m/^192\./',
     }
 
+Because the regex is string-evaled into existence within a different package,
+variable interpolation can be problematic.  A demonstration is clearer than an
+explanation here:
+
+    use Regexp::Common qw(net);
+    {
+        match => 'm/^$RE{net}{IPv4}$/', # Don't do this
+        ...,
+    }
+
+This fails because the C<%RE> hash hasn't been imported into the same package
+into which this regex will be evaled.  If such a construct is needed, it's 
+probably preferable to use C<custom> instead:
+
+    use Regexp::Common qw(net);
+    {
+        custom => sub { my($key,$val) = @_; return $val =~ m/^$RE{net}{IPv4}$/; },
+        ...,
+    }
+
 =item C<max_in_set> and C<min_in_set>
 
 Somewhat like min_values and max_values except that you specify the
