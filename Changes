@@ -1,3 +1,8 @@
+3.01
+    2015-03-31
+        * META information now includes GitHub repo.
+        * CGI::Ex::Validate POD describes match => ... construct in more detail.
+
 3.00
     2013-09-26
         * Documentation overhaul
