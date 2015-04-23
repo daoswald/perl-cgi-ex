@@ -2,6 +2,8 @@
     2015-03-31
         * META information now includes GitHub repo.
         * CGI::Ex::Validate POD describes match => ... construct in more detail.
+        * Fixed POD bug in 'required' section, and provided another
+          'validate_if' example.
 
 3.00
     2013-09-26

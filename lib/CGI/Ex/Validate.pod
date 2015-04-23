@@ -541,9 +541,10 @@ to allow more than one item by any given name).
 Requires the form field to have some value.  If the field is not present,
 no other checks will be run and an error will be given.
 
-It has been common for code to try C<required => 0> which essentially has
-no effect - instead use C<validate_if => 'fieldname', required => 1>.  This
-results in the fieldname only being required if the fieldname is present.
+It has been a common mistake for code to try C<< required => 0 >> which 
+essentially has no effect - instead use 
+C<< validate_if => 'fieldname', required => 1 >>.  This results in the 
+fieldname only being required if the fieldname is present.
 
 =item C<required_if>
 
@@ -688,8 +689,15 @@ if the conditions are met.  Works in JS.
         equals      => '$1_pass',
         required    => 1,
     }
-
     # will validate foo_pass only if foo_user was present.
+
+    myfield => {
+        validate_if => 'myfield',
+        desc        => 'A field that is not required, but that has a type.',
+        type        => 'UINT',
+    },
+    # Will validate if field is not present, or if it is present and
+    # contains a C<UINT> value.
 
 The validate_if may also contain an arrayref of validation items.  So that
 multiple checks can be run.  They will be run in order.  validate_if will
